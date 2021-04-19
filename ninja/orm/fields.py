@@ -43,6 +43,12 @@ TYPES = {
 
 TModel = TypeVar("TModel")
 
+from django.conf import settings
+
+if 'django.contrib.gis' in settings.INSTALLED_APPS:
+    from .geofields import NinjaPolygonField
+    TYPES.update({"PolygonField": NinjaPolygonField})
+
 
 @no_type_check
 def create_m2m_link_type(type_: Type[TModel]) -> Type[TModel]:
