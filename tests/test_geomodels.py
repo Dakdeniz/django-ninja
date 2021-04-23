@@ -4,10 +4,12 @@ from ninja.orm.geofields import NinjaPolygonField
 from pydantic import BaseModel
 from client import NinjaClient
 
+
 class PolygonModel(BaseModel):
-    name:str
+    name: str
     source: int
-    geom : NinjaPolygonField
+    geom: NinjaPolygonField
+
 
 class SomeModel(BaseModel):
     i: int
@@ -32,13 +34,9 @@ router = Router()
 
 
 @router.post("/test_post_polygon")
-def view1(request, some: SomeModel):
-    assert isinstance(some, SomeModel)
+def view_polygon(request, some: PolygonModel):
+    assert isinstance(some, PolygonModel)
     return some
-
-
-
-
 
 
 @router.post("/test1")
@@ -142,7 +140,7 @@ client = NinjaClient(router)
             dict(json=None),
             {"x": 1, "y": 1},
         ),
-        
+
     ],
     # fmt: on
 )

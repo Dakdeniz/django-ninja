@@ -45,8 +45,9 @@ TModel = TypeVar("TModel")
 
 from django.conf import settings
 
-if 'django.contrib.gis' in settings.INSTALLED_APPS:
+if "django.contrib.gis" in settings.INSTALLED_APPS:
     from .geofields import NinjaPolygonField
+
     TYPES.update({"PolygonField": NinjaPolygonField})
 
 

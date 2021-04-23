@@ -1,9 +1,10 @@
-from django.contrib.gis.geos import Point, Polygon
-from typing import Dict
 import json
 
+from typing import Dict
+from django.contrib.gis.geos import Point, Polygon
+
+
 class NinjaPolygonField(Dict):
-      
     @classmethod
     def __get_validators__(cls):
         # one or more validators may be yielded which will be called in the
@@ -25,9 +26,6 @@ class NinjaPolygonField(Dict):
     @classmethod
     def validate(cls, v):
         if not isinstance(v, Polygon):
-            raise TypeError('Polygon required')
-        
-        return json.loads(v.geojson)
+            raise TypeError("Polygon required")
 
-    ''' def __repr__(self):
-        return "polygon" '''
+        return json.loads(v.geojson)

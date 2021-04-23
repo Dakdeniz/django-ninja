@@ -13,6 +13,7 @@ class BaseRenderer:
     charset: str = "utf-8"
 
     def render(self, request: HttpRequest, data: Any, *, response_status: int) -> Any:
+        print("BaseRenderer")
         raise NotImplementedError("Please implement .render() method")
 
 

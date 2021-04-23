@@ -37,3 +37,10 @@ codes_2xx = resp_codes(200, 206)
 codes_3xx = resp_codes(300, 308)
 codes_4xx = resp_codes(400, 412) | frozenset({416, 418, 425, 429, 451})
 codes_5xx = resp_codes(500, 504)
+
+
+class GeoJsonResponse(Response):
+    def __init__(self, data: Any, **kwargs: Any) -> None:
+
+        print(data)
+        super().__init__(data, encoder=NinjaJSONEncoder, safe=False, **kwargs)
